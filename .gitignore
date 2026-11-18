@@ -221,3 +221,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Lab data: do not publish
+data_private/
+*.xlsx
+*.xls
+*.csv
+.streamlit/secrets.toml
+.vscode/
