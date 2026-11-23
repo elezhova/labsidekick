@@ -1,17 +1,18 @@
-# 🧪 LabSidekick
+#  LabSidekick
 
+[![Open in Streamlit](https://streamlit.io)](https://labsidekick-gj3vvxqmyskkcbqdufnwwe.streamlit.app/)
 ![Tests](https://github.com)
 ![Python](https://shields.io)
-![Streamlit](https://shields.io)
 ![License: MIT](https://shields.io)
 
 **LabSidekick** is a lightweight, mobile-friendly web assistant built for neuroscience and biochemistry wet-lab workflows. It turns static lab protocols into interactive calculators with automated reagent prep, serial dilution tables, and 96-well plate reader batch processing.
 
+> **Live App:** [labsidekick-gj3vvxqmyskkcbqdufnwwe.streamlit.app](https://labsidekick-gj3vvxqmyskkcbqdufnwwe.streamlit.app/)  
 > Built for the **Laboratory of Comparative Physiology and Pathology of the CNS (IEPhB RAS)**.
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 * **Protocol-as-Data (`YAML`):** Protocols are decoupled from the UI logic. Add or update lab protocols simply by dropping a new `.yaml` file into `protocols/` or uploading it directly via the web interface.
 * **Reagent & Calibration Prep:** Automated mass calculations (\(m = \frac{M \cdot V \cdot M_r}{1000}\)) and 1:1 serial dilution tables (e.g., Cysteine standard curves for DTNB assays).
@@ -23,7 +24,7 @@
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 labsidekick/
@@ -43,7 +44,7 @@ labsidekick/
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Run Locally
 ```bash
@@ -60,7 +61,7 @@ python -m pytest
 
 ---
 
-## 📝 Adding a New Protocol
+##  Adding a New Protocol
 
 Create a new `.yaml` file inside the `protocols/` directory following this structure:
 
@@ -97,6 +98,6 @@ activity_params:
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
