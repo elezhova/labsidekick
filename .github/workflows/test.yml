@@ -9,4 +9,5 @@ jobs:
         with:
           python-version: "3.11"
       - run: pip install pytest pyyaml pandas
-      - run: pytest
+      - run: python -m pytest
+
