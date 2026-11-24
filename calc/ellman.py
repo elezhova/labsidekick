@@ -10,7 +10,7 @@ def calc_serial_dilution(start_mm: float, tubes: int, well_vol_ul: float = 12.5)
     conc = start_mm
     for i in range(1, tubes + 1):
         rows.append({
-            "Пробирка": f"Пробирка №{i}",
+            "Лунка": f"Лунка №{i}",
             "Концентрация, мМ": round(conc, 3),
             "В лунке (нмоль)": round(conc * well_vol_ul, 3),
         })
