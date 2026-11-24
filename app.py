@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 from calc.ellman import calc_mass_g, calc_serial_dilution, calc_df, calc_activity
 
-st.set_page_config(page_title="LabSidekick", page_icon="🧪", layout="centered")
+st.set_page_config(page_title="LabSidekick", layout="centered")
 
 PROTOCOLS_DIR = "protocols"
 protocols = {}
@@ -19,7 +19,7 @@ if os.path.exists(PROTOCOLS_DIR):
                     protocols[data.get("title", fname)] = data
 
 # 2. Боковое меню: выбор протокола и временная подгрузка нового файла
-st.sidebar.header("📂 Протоколы")
+st.sidebar.header("Протоколы")
 uploaded = st.sidebar.file_uploader("Подгрузить протокол (.yaml)", type=["yaml", "yml"])
 if uploaded is not None:
     temp_data = yaml.safe_load(uploaded.getvalue().decode("utf-8"))
@@ -36,7 +36,7 @@ selected_title = st.sidebar.selectbox("Активный протокол", list(
 proto = protocols[selected_title]
 
 # --- ОСНОВНОЙ ЭКРАН ---
-st.title(f"🧪 {proto['title']}")
+st.title(f"{proto['title']}")
 if "description" in proto:
     st.caption(proto["description"])
 
@@ -56,16 +56,11 @@ with tab1:
 
         mass_g = calc_mass_g(m_mm, v_ml, mr)
         st.success(f"Навеска: **{mass_g:.4f} г** ({mass_g * 1000:.1f} мг)")
-    if "calibration" in proto:
+       if "calibration" in proto:
         st.divider()
-        st.subheader("Калибровочная кривая по цистеину (разведение 1:1 в пробирках)")
+        st.subheader("Калибровочная серия цистеина (разведение 1:1 в пробирках)")
         cal = proto["calibration"]
-        
         sample_ul = float(cal.get("well_sample_ul", 12.5))
-        h2o_ul = float(cal.get("well_h2o_ul", 80.0))
-        dtnb_ul = float(cal.get("well_dtnb_ul", 25.0))
-        sds_ul = float(cal.get("well_sds_ul", 12.5))
-        total_ul = sample_ul + h2o_ul + dtnb_ul + sds_ul
 
         c1, c2 = st.columns(2)
         tubes = c1.slider("Количество пробирок", 2, 10, int(cal.get("tubes_count", 7)))
@@ -76,12 +71,12 @@ with tab1:
             f"1. В пробирку №1 налейте исходный раствор цистеина ({float(cal['start_molarity_mm']):g} мМ).\n"
             f"2. В пробирки №2–№{tubes} заранее налейте по **{step_vol} мкл** дист. воды.\n"
             f"3. Перенесите **{step_vol} мкл** из пробирки №1 в пробирку №2, перемешайте пипетированием. Повторите цепочку до пробирки №{tubes}.\n\n"
-            f"**Как раскапывать в планшет (итого {total_ul:g} мкл в лунке):**\n"
-            f"В каждую лунку внесите **{h2o_ul:g} мкл** H₂O дист. + **{sample_ul:g} мкл** раствора из соответствующей пробирки + **{dtnb_ul:g} мкл** DTNB + **{sds_ul:g} мкл** SDS."
+            f"Расчет объемов для внесения в планшет смотрите на вкладке **«2. Раскапывание»** (режим *«Калибровка по цистеину»*)."
         )
 
         dil_rows = calc_serial_dilution(float(cal["start_molarity_mm"]), tubes, sample_ul)
         st.dataframe(pd.DataFrame(dil_rows), use_container_width=True, hide_index=True)
+
 
 
 # ВКЛАДКА 2: СМЕСИ НА ПЛАНШЕТ
