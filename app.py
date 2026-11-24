@@ -61,7 +61,7 @@ with tab1:
         st.divider()
         st.subheader("Калибровочная кривая по цистеину (разведение 1:1)")
         cal = proto["calibration"]
-        tubes = st.slider("Количество пробирок", 2, 10, int(cal.get("tubes_count", 7)))
+        tubes = st.slider("Количество лунок", 2, 10, int(cal.get("tubes_count", 7)))
         dil_rows = calc_serial_dilution(float(cal["start_molarity_mm"]), tubes, float(cal["well_sample_ul"]))
         st.dataframe(pd.DataFrame(dil_rows), use_container_width=True, hide_index=True)
 
