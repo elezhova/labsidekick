@@ -5,17 +5,19 @@ def calc_mass_g(molarity_mm: float, volume_ml: float, mr: float) -> float:
 
 
 def calc_serial_dilution(start_mm: float, tubes: int, well_vol_ul: float = 12.5) -> list[dict]:
-    """Серийное разведение 1:1 с водой."""
+    """Серийное разведение 1:1 в пробирках и расчет переноса в лунку."""
     rows = []
     conc = start_mm
     for i in range(1, tubes + 1):
         rows.append({
-            "Лунка": f"Лунка №{i}",
-            "Концентрация, мМ": round(conc, 3),
-            "В лунке (нмоль)": round(conc * well_vol_ul, 3),
+            "Пробирка": f"Пробирка №{i}",
+            "Концентрация в пробирке, мМ": round(conc, 3),
+            "В лунку из пробирки, мкл": well_vol_ul,
+            "В лунке цистеина, нмоль": round(conc * well_vol_ul, 3),
         })
         conc /= 2.0
     return rows
+
 
 
 def calc_df(v_total_ml: float, v_sample_ml: float, plasma_dilution: float) -> float:
