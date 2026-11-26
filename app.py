@@ -44,9 +44,15 @@ if "description" in proto:
     st.caption(proto["description"])
 
 for note in proto.get("notes", []):
-    st.warning(f"⚠️ {note}")
+    st.warning(f"{note}")
+
+if "steps" in proto:
+    with st.expander("📋 Пошаговый протокол для новичков", expanded=False):
+        for step in proto["steps"]:
+            st.markdown(step)
 
 tab1, tab2, tab3, tab4 = st.tabs([
+
     "1. Навески",
     "2. Раскапывание",
     "3. Одиночный расчет",

@@ -16,7 +16,6 @@
 * **Plate Pipetting Assistant:** Calculates exact working solution and reagent volumes for any number of wells with customizable pipetting dead-volume reserves.
 * **Single-Well & 96-Well Batch Processing:**
   * Supports **Modified Ellman's Method** for total Cholinesterase (ChE), Acetylcholinesterase (AChE with ethopropazine), and Butyrylcholinesterase (BChE).
-  * Parses **8x12 plate matrices** and flat well lists from `.xlsx` / `.csv` plate reader exports and generates ready-to-download Excel reports.
 * **Cross-Platform Access:** Responsive interface works seamlessly on desktop computers, tablets, and smartphones in the lab.
 
 ---
@@ -45,7 +44,7 @@ labsidekick/
 
 ### Run Locally
 ```bash
-git clone https://github.com
+git clone https://github.com/elezhova/labsidekick
 cd labsidekick
 pip install -r requirements.txt
 streamlit run app.py
