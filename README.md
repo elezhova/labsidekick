@@ -1,6 +1,5 @@
 # LabSidekick
 
-**[Open Live App (Streamlit)](https://streamlit.app)** | **Tests:** Passing | **Python:** 3.11+ | **License:** MIT
 
 **LabSidekick** is a lightweight, mobile-friendly web assistant built for neuroscience and biochemistry wet-lab workflows. It turns static lab protocols into interactive calculators with automated reagent prep, serial dilution tables, and 96-well plate reader batch processing.
 
@@ -65,8 +64,9 @@ Create a new `.yaml` file inside the `protocols/` directory following this struc
 title: "Protocol Title"
 description: "Short assay description and wavelength."
 
-notes:
-  - "Critical bench warning (e.g., add SDS before substrate in control wells)."
+steps: "Step by step description of protocol"
+
+notes: "Critical bench warning (e.g., add SDS before substrate in control wells)."
 
 reagents:
   - id: "reagent_1"
@@ -93,6 +93,16 @@ activity_params:
 ```
 
 ---
+## Roadmap
+
+- [x] Modified Ellman's method (ChE, AChE, BChE) & kinetic assays
+- [x] Reagent mass & 1:1 serial dilution calculators
+- [ ] Linear standard curve calculator (Bradford / Lowry / BCA protein assays)
+- [ ] Protein normalization (U/mg protein)
+- [ ] Inhibition % & cell viability calculator (SOD, MTT)
+- [ ] 96-well plate matrix (8x12) Excel parser
+- [ ] 4PL nonlinear regression for ELISA
+
 
 ## License
 
